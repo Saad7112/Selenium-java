@@ -1,48 +1,43 @@
-version: '3'
+version: '3.8'
+
 services:
+  app:
+    build: ./app
+    ports:
+      - "3000:3000"
+
   selenium-hub:
-    image: selenium/hub:latest
+    image: selenium/hub:4.8.0-20230421
     container_name: selenium-hub
     ports:
       - "4444:4444"
-    environment:
-      - GRID_TIMEOUT=60000
-      - GRID_BROWSER_TIMEOUT=120000
- 
+
   chrome:
-    image: selenium/node-chrome:latest
-    container_name: chrome
+    image: selenium/node-chrome:4.8.0-20230421
+    volumes:
+      - /dev/shm:/dev/shm
     depends_on:
       - selenium-hub
     environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
-      - NODE_MAX_SESSION=5
-      - NODE_MAX_INSTANCES=5
-    ports:
-      - "5900:5900"
- 
+
   firefox:
-    image: selenium/node-firefox:latest
-    container_name: firefox
+    image: selenium/node-firefox:4.8.0-20230421
+    volumes:
+      - /dev/shm:/dev/shm
     depends_on:
       - selenium-hub
     environment:
-      - SE_EVENT_BUS_HOST=selenium-hub
-      - SE_EVENT_BUS_PUBLISH_PORT=4442
-      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
-      - NODE_MAX_SESSION=5
-      - NODE_MAX_INSTANCES=5
-    ports:
-      - "5901:5900"
- 
-  hello-world-app:
-    build: .
-    container_name: hello-world-app
-    ports:
-      - "3000:3000"
+
+  selenium-tests:
+    build: ./selenium-tests
+    depends_on:
+      - app
+      - selenium-hub
+    environment:
+      - HUB_HOST=selenium-hub
+      - HUB_PORT=4444
+
