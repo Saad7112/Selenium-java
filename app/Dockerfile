@@ -11,9 +11,9 @@ RUN npm install
 # Copy app files
 COPY . .
 
-RUN npm init -y
+#RUN npm init -y
 
-RUN npm install express
+#RUN npm install express
  
 # Expose the port the app runs on
 EXPOSE 3000
