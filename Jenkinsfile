@@ -1,5 +1,8 @@
 pipeline {
     agent any
+    tools {
+        nodejs 'node' // Name of the Node.js installation you configured
+    }
 
     stages {
         stage('Build and Deploy') {
