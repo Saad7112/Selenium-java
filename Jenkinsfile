@@ -24,6 +24,7 @@ pipeline {
                         sleep(time: 10, unit: 'SECONDS')
                         
                     }
+                    sh 'mvn /home/new/saad/Selenium-java/selenium-test/src/test/java/MySeleniumTests.java'
                 }
             }
         }
