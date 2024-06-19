@@ -7,30 +7,32 @@ services:
       - "3000:3000"
 
   selenium-hub:
-    image: selenium/hub:4.8.0-20230421
+    image: selenium/hub:4.8.0-20230522
     container_name: selenium-hub
     ports:
       - "4444:4444"
 
   chrome:
-    image: selenium/node-chrome:4.8.0-20230421
+    image: selenium/node-chrome:4.8.0-20230522
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
       - selenium-hub
     environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
   firefox:
-    image: selenium/node-firefox:4.8.0-20230421
+    image: selenium/node-firefox:4.8.0-20230522
     volumes:
       - /dev/shm:/dev/shm
     depends_on:
       - selenium-hub
     environment:
-      - HUB_HOST=selenium-hub
-      - HUB_PORT=4444
+      - SE_EVENT_BUS_HOST=selenium-hub
+      - SE_EVENT_BUS_PUBLISH_PORT=4442
+      - SE_EVENT_BUS_SUBSCRIBE_PORT=4443
 
   selenium-tests:
     build: ./selenium-tests
@@ -40,4 +42,3 @@ services:
     environment:
       - HUB_HOST=selenium-hub
       - HUB_PORT=4444
-
