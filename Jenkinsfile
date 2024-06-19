@@ -6,6 +6,11 @@ pipeline {
             steps {
                 script {
                     sh 'docker compose up -d'
+                    // Wait for Selenium Hub to be ready
+                    retry(5) {
+                        sleep(time: 10, unit: 'SECONDS')
+                        
+                    }
                 }
             }
         }
@@ -14,15 +19,12 @@ pipeline {
             steps {
                 script {
                     sh 'docker compose run selenium-tests'
+                    // Wait for Selenium Hub to be ready
+                    retry(5) {
+                        sleep(time: 10, unit: 'SECONDS')
+                        
+                    }
                 }
-            }
-        }
-    }
-
-    post {
-        always {
-            script {
-                sh 'docker compose down'
             }
         }
     }
