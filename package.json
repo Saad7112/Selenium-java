@@ -1,0 +1,23 @@
+{
+  "name": "selenium",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "express": "^4.19.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Saad7112/selenium-test.git"
+  },
+  "bugs": {
+    "url": "https://github.com/Saad7112/selenium-test/issues"
+  },
+  "homepage": "https://github.com/Saad7112/selenium-test#readme",
+  "description": ""
+}
