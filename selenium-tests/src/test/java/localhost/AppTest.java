@@ -25,7 +25,7 @@ public class AppTest {
 
     @Test
     public void testApp() throws Exception {
-        driver.get("http://localhost:3000");
+        driver.get("http://hello-world-app:3000");
 
         // Assuming "Hello World!" is the only text on the page or is within a specific element.
         // Adjust the By locator to match the specific element if needed.
