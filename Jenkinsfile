@@ -24,7 +24,7 @@ pipeline {
                         sleep(time: 10, unit: 'SECONDS')
                         
                     }
-                    dir('selenium-tests'){
+                    dir('/home/new/saad/test/Selenium-java/selenium-tests'){
                     sh 'mvn test'
                     }
                     
