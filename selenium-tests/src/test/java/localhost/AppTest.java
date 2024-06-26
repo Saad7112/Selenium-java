@@ -11,7 +11,7 @@ import java.net.URL;
 
 import static org.junit.Assert.assertEquals;
 
-public class MySeleniumTests {
+public class AppTest {
 
     private WebDriver driver;
 
