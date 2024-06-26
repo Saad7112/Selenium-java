@@ -8,7 +8,9 @@ services:
     environment:
       - GRID_TIMEOUT=60000
       - GRID_BROWSER_TIMEOUT=120000
- 
+    networks:
+      - selenium-grid
+
   chrome:
     image: selenium/node-chrome:latest
     container_name: chrome
@@ -24,7 +26,9 @@ services:
       - NODE_MAX_INSTANCES=5
     ports:
       - "5900:5900"
- 
+    networks:
+      - selenium-grid
+
   firefox:
     image: selenium/node-firefox:latest
     container_name: firefox
@@ -40,9 +44,17 @@ services:
       - NODE_MAX_INSTANCES=5
     ports:
       - "5901:5900"
- 
+    networks:
+      - selenium-grid
+
   hello-world-app:
     build: .
     container_name: hello-world-app
     ports:
       - "3000:3000"
+    networks:
+      - selenium-grid
+
+networks:
+  selenium-grid:
+    driver: bridge
