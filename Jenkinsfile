@@ -24,7 +24,7 @@ pipeline {
                         sleep(time: 10, unit: 'SECONDS')
                         
                     }
-                    dir('/var/jenkins_home/workspace/node-test-app/maven-test/selenium-tests'){
+                    dir('/var/jenkins_home/selenium-tests'){
                     sh 'mvn test'
                     }
                     
