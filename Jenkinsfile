@@ -8,7 +8,7 @@ pipeline {
         stage('Build and Deploy') {
             steps {
                 script {
-                    sh 'docker compose up -d'
+                    bat 'docker compose up -d'
                     // Wait for Selenium Hub to be ready
                     
                 }
@@ -25,7 +25,7 @@ pipeline {
                         
                     }
                     dir('/var/jenkins_home/selenium-tests'){
-                    sh 'mvn test'
+                    bat 'mvn test'
                     }
                     
                 }
