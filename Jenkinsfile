@@ -24,7 +24,7 @@ pipeline {
                         sleep(time: 10, unit: 'SECONDS')
                         
                     }
-                    dir('C:\ProgramData\Jenkins\selenium-tests'){
+                    dir('C:/ProgramData/Jenkins/selenium-tests'){
                     bat 'mvn test'
                     }
                     
