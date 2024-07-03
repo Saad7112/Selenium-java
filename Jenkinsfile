@@ -1,16 +1,16 @@
 pipeline {
     agent any
+    
     tools {
-        nodejs 'node' // Name of the Node.js installation you configured
+        nodejs 'node'
     }
-
+    
     stages {
         stage('Build and Deploy') {
             steps {
                 script {
                     bat 'docker compose up -d'
                     // Wait for Selenium Hub to be ready
-                    
                 }
             }
         }
@@ -18,18 +18,28 @@ pipeline {
         stage('Run Selenium Tests') {
             steps {
                 script {
-                    //sh 'docker compose run selenium-tests'
-                    // Wait for Selenium Hub to be ready
                     retry(5) {
                         sleep(time: 10, unit: 'SECONDS')
-                        
                     }
-                    dir('C:/ProgramData/Jenkins/selenium-tests'){
-                    bat 'mvn test'
+                    dir('C:\\ProgramData\\Jenkins\\selenium-tests') {
+                        bat 'mvn test'
                     }
-                    
                 }
             }
+        }
+    }
+    
+    post {
+        always {
+            // Publish Selenium HTML Reports
+            publishHTML(target: [
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: 'C:\\ProgramData\\Jenkins\\selenium-tests\\target\\surefire-reports',
+                reportFiles: 'index.html',
+                reportName: 'Selenium Test Report'
+            ])
         }
     }
 }
