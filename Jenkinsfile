@@ -36,7 +36,7 @@ pipeline {
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
-                reportDir: 'C:/Users/sannya/Documents',
+                reportDir: 'C:/ProgramData/Jenkins/.jenkins/workspace',
                 reportFiles: 'index.html',
                 reportName: 'Selenium Test Report'
             ])
