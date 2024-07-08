@@ -36,7 +36,7 @@ pipeline {
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
                 keepAll: true,
-                reportDir: 'C:/ProgramData/Jenkins/selenium-tests/target/surefire-reports',
+                reportDir: 'target/surefire-reports',
                 reportFiles: 'index.html',
                 reportName: 'Selenium Test Report'
             ])
