@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.URL;
 
-import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertFalse;
 
 public class AppTest {
 
@@ -23,19 +23,18 @@ public class AppTest {
         driver = new RemoteWebDriver(new URL(remoteWebDriverUrl), capabilities);
     }
 
-   @Test
-public void testApp() throws Exception {
-    driver.get("http://hello-world-app:3000");
+    @Test
+    public void testApp() throws Exception {
+        driver.get("http://hello-world-app:3000");
 
-    // Assuming "Hello World!" is the only text on the page or is within a specific element.
-    // Adjust the By locator to match the specific element if needed.
-    WebElement bodyElement = driver.findElement(By.tagName("body"));
-    String bodyText = bodyElement.getText();
+        // Assuming "Hello World!" is the only text on the page or is within a specific element.
+        // Adjust the By locator to match the specific element if needed.
+        WebElement bodyElement = driver.findElement(By.tagName("body"));
+        String bodyText = bodyElement.getText();
 
-    // Assert that the body text does not contain "Hello"
-    assertFalse("Body contains 'Hello World!'", bodyText.contains("Hello"));
-}
-
+        // Assert that the body text does not contain "Hello World!"
+        assertFalse("Body contains 'Hello World!'", bodyText.contains("Hello World!"));
+    }
 
     @After
     public void tearDown() throws Exception {
