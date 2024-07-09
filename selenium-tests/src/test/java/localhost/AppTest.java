@@ -23,18 +23,19 @@ public class AppTest {
         driver = new RemoteWebDriver(new URL(remoteWebDriverUrl), capabilities);
     }
 
-    @Test
-    public void testApp() throws Exception {
-        driver.get("http://hello-world-app:3000");
+   @Test
+public void testApp() throws Exception {
+    driver.get("http://hello-world-app:3000");
 
-        // Assuming "Hello World!" is the only text on the page or is within a specific element.
-        // Adjust the By locator to match the specific element if needed.
-        WebElement bodyElement = driver.findElement(By.tagName("body"));
-        String bodyText = bodyElement.getText();
+    // Assuming "Hello World!" is the only text on the page or is within a specific element.
+    // Adjust the By locator to match the specific element if needed.
+    WebElement bodyElement = driver.findElement(By.tagName("body"));
+    String bodyText = bodyElement.getText();
 
-        // Assert that the body text is "Hello World!"
-        assertEquals("Hello Worldfail!", bodyText);
-    }
+    // Assert that the body text does not contain "Hello"
+    assertFalse("Body contains 'Hello World!'", bodyText.contains("Hello"));
+}
+
 
     @After
     public void tearDown() throws Exception {
