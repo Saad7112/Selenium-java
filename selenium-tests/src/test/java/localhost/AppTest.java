@@ -33,7 +33,7 @@ public class AppTest {
         String bodyText = bodyElement.getText();
 
         // Assert that the body text is "Hello World!"
-        assertEquals("Hello World!", bodyText);
+        assertEquals("Hello Worldfail!", bodyText);
     }
 
     @After
