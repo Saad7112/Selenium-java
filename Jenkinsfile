@@ -22,7 +22,7 @@ pipeline {
                         sleep(time: 10, unit: 'SECONDS')
                     }
                     dir('C:\\ProgramData\\Jenkins\\selenium-tests') {
-                        bat 'mvnw clean install site surefire-report:report'
+                        bat 'mvn clean install site surefire-report:report'
                     }
                 }
             }
