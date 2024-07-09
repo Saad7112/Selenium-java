@@ -33,7 +33,7 @@ public class AppTest {
         String bodyText = bodyElement.getText();
 
         // Assert that the body text does not contain "Hello World!"
-        assertFalse("Body contains 'Hello World!'", bodyText.contains("Hello World!"));
+        assertFalse("Body contains 'fkjsnjfnd!'", bodyText.contains("Hello World!"));
     }
 
     @After
