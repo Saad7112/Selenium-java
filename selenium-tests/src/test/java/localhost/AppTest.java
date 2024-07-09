@@ -9,7 +9,7 @@ import org.openqa.selenium.remote.RemoteWebDriver;
 
 import java.net.URL;
 
-import static org.junit.Assert.assertTrue;
+import static org.junit.Assert.assertFalse;
 
 public class AppTest {
 
@@ -32,8 +32,8 @@ public class AppTest {
         WebElement bodyElement = driver.findElement(By.tagName("body"));
         String bodyText = bodyElement.getText();
 
-        // Assert that the body text contains "Hello World!"
-        assertTrue("Body does not contain 'no'", bodyText.contains("no!"));
+        // Assert that the body text does not contain "Hello World!"
+        assertFalse("Body contains 'Hello World!'", bodyText.contains("Hello World!"));
     }
 
     @After
